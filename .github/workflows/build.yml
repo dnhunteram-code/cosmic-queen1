@@ -15,11 +15,9 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -31,18 +29,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
 
-            - name: Upload macOS Artifact
-        if: matrix.os == 'macos-latest'
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Cosmic-Queen-macOS
+          name: build-${{ matrix.os }}
           path: |
             release/**/*.zip
-
-      - name: Upload Windows Artifact
-        if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v4
-        with:
-          name: Cosmic-Queen-Windows
-          path: |
             release/**/*.exe
