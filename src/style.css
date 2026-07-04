@@ -1,0 +1,1160 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#000;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+canvas{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:1;
+
+}
+
+/* ========================= */
+/* Loading Screen */
+/* ========================= */
+
+#loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+.loading-box{
+
+    width:420px;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.loading-box h1{
+
+    font-size:34px;
+
+    margin-bottom:30px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:20px;
+
+    background:#222;
+
+    overflow:hidden;
+
+}
+
+#progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #00d4ff,
+        #8b5cf6
+    );
+
+}
+
+#loading-text{
+
+    margin-top:20px;
+
+    opacity:.8;
+
+}
+
+/* ========================= */
+/* Intro */
+/* ========================= */
+
+#intro{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:20;
+
+    pointer-events:none;
+
+    opacity:0;
+
+}
+
+.gift-card{
+
+    width:280px;
+
+    height:380px;
+
+    cursor:pointer;
+
+    transform-style:preserve-3d;
+
+    transition:.8s;
+
+}
+
+.gift-card:hover{
+
+    transform:scale(1.05);
+
+}
+
+.card-face{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    border-radius:24px;
+
+    color:white;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:0 0 40px rgba(255,255,255,.15);
+
+}
+
+.back{
+
+    transform:rotateY(180deg);
+
+}
+
+.emoji{
+
+    font-size:70px;
+
+    margin-bottom:25px;
+
+}
+
+h2{
+
+    margin-bottom:10px;
+
+}
+#gift-card{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#000;
+
+    z-index:1000;
+
+}
+
+.gift-content{
+
+    width:380px;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+
+        0 0 40px rgba(255,255,255,.15);
+
+}
+
+.gift-content h1{
+
+    font-size:70px;
+
+    margin:0;
+
+}
+
+.gift-content h2{
+
+    margin:20px 0 10px;
+
+    font-weight:300;
+
+}
+
+.gift-content p{
+
+    opacity:.7;
+
+}
+
+#openGift{
+
+    margin-top:25px;
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+#gift-card{
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+}
+
+#gift-card.hide{
+
+    opacity:0;
+
+    transform:scale(1.15);
+
+    pointer-events:none;
+
+}
+
+/* ========================= */
+/* Memory Screen */
+/* ========================= */
+#memory-screen{
+
+     position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    padding:30px;
+    background:
+
+radial-gradient(
+
+    circle at top,
+
+    rgba(255,90,170,.12),
+
+    transparent 32%
+
+),
+
+radial-gradient(
+
+    circle,
+
+    #250815 0%,
+
+    #15040d 45%,
+
+    #080106 100%
+
+);
+
+    
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.6s;
+
+    z-index:9999;
+
+}
+
+#memory-screen.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.memory-card{
+
+    width:min(720px,90vw);
+
+    min-height:85vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:cardShow .6s ease;
+
+}
+
+#memory-image{
+
+    display:block;
+
+   width:min(60%,340px);
+
+    margin:0 auto 25px;
+
+    border-radius:24px;
+
+    display:block;
+
+    animation:floatImage 4s ease-in-out infinite;
+
+    box-shadow:
+
+        0 0 25px rgba(255,90,170,.30),
+
+        0 0 60px rgba(160,90,255,.18);
+}#memory-title{
+
+    width:100%;
+
+    text-align:center;
+
+    color:#ffffff;
+
+    font-size:clamp(34px, 4vw, 52px);
+
+    font-family:Georgia, serif;
+
+    font-style:italic;
+
+    font-weight:400;
+
+    margin-bottom:14px;
+
+    text-shadow:
+        0 0 4px rgba(255,95,162,.9),
+        0 0 10px rgba(255,95,162,.7),
+        0 0 18px rgba(255,95,162,.45);
+
+}
+
+#memory-message{
+
+width:min(72%,650px);
+
+    color:#ffffff;
+
+font-size:clamp(16px,1.7vw,21px);
+    width:min(72%, 650px);
+
+    line-height:1.9;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 3px rgba(255,95,162,.8),
+        0 0 8px rgba(255,95,162,.5);
+
+}
+#memory-close{
+
+    margin-top:28px;
+
+    width:180px;
+
+    height:54px;
+
+    border-radius:40px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:white;
+
+    letter-spacing:3px;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#memory-close:hover{
+
+    border-color:#ff6fb8;
+
+    color:#ffb7d8;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 0 25px rgba(255,90,170,.22);
+
+}
+
+@keyframes cardShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px) scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+@keyframes floatImage{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+.memory-heart{
+
+    font-size:42px;
+
+    color:#ff5fa8;
+
+    margin-bottom:25px;
+
+    animation:heartBeat 2.5s ease-in-out infinite;
+
+    filter:
+
+        drop-shadow(0 0 10px rgba(255,95,168,.6))
+
+        drop-shadow(0 0 25px rgba(255,95,168,.35));
+
+}
+@keyframes heartBeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+#intro-screen{
+
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    overflow: hidden;
+
+    transition:
+        opacity 1.2s ease;
+}
+
+.intro-background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* ضبط ألوان الخلفية لتكون أعمق وأكثر تبايناً مع عناصر النيون */
+    background: 
+        radial-gradient(circle at 30% 25%, rgba(130, 70, 255, 0.22), transparent 45%),
+        radial-gradient(circle at 75% 75%, rgba(255, 90, 180, 0.15), transparent 50%),
+        linear-gradient(180deg, #0d091a, #070510); 
+}
+
+.intro-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: .45;
+}
+
+.glow-1 {
+    width: 420px;
+    height: 420px;
+    background: #6231ec; /* إضاءة بنفسجية ناعمة في الخلفية */
+    top: -120px;
+    left: -120px;
+}
+
+.glow-2 {
+    width: 380px;
+    height: 380px;
+    background: #e040b0; /* إضاءة وردية ناعمة في الخلفية */
+    bottom: -120px;
+    right: -100px;
+}
+
+.intro-card {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: min(980px, 50vw);
+    min-width: 680px;
+    min-height: 820px;
+
+    background: rgba(26, 20, 46, 0.75);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 34px;
+
+    padding: 80px 70px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,.55);
+
+    transform-origin:center;
+
+    transition:
+        transform .7s ease,
+        filter .7s ease;
+
+    animation:
+        introFloat
+        5s ease-in-out infinite;
+
+}
+
+.intro-photo {
+    width: 260px;
+    height: 260px;
+    margin: 15px auto 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-card h1 {
+    margin: 0 0 45px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 92px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -2px;
+    line-height: 1;
+    text-align: center;
+    text-shadow: 0 0 25px rgba(255, 255, 255, .25);
+}
+
+.intro-card p {
+    /* زيادة المسافة العلوية لتبعده عن الصورة، وتقليل المسافة السفلية ليقترب من الزرار */
+    margin-top: 50px;     /* يمكنك زيادة هذا الرقم إذا أردت إبعاده أكثر عن الصورة */
+    margin-bottom: 8px;   /* مسافة صغيرة جداً ليكون فوق الزرار مباشرة */
+
+    font-size: 18px;
+    letter-spacing: 4px;
+    color: #ffffff;
+    opacity: .9;
+}
+
+/* --- تعديل وتنسيق ألوان الزرار بالكامل ليتناسب مع الواجهة --- */
+.intro-card button {
+
+    position: relative;
+
+    overflow: hidden;
+
+    width: 190px;
+
+    height: 60px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #ec4899
+        );
+
+    box-shadow:
+
+        0 0 0 4px rgba(255,120,210,.18),
+
+        0 0 28px rgba(255,110,205,.32),
+
+        0 12px 35px rgba(255,90,185,.20);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+
+}
+
+.intro-card button:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    background:
+        linear-gradient(
+            135deg,
+            #a78bfa,
+            #f472b6
+        );
+
+    box-shadow:
+
+        0 0 0 8px rgba(255,145,220,.24),
+
+        0 0 55px rgba(255,120,210,.55),
+
+        0 20px 50px rgba(255,95,190,.35);
+
+}
+
+.intro-card button:active{
+
+    transform:
+        scale(.96);
+
+}
+
+/* تم دمج وتعديل الـ Hover لحل التكرار في كودك القديم */
+.intro-card button:hover {
+    transform: translateY(-3px) scale(1.03);
+    /* زيادة توهج وإضاءة النيون عند تمرير الماوس */
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    box-shadow: 
+        0 0 0 6px rgba(236, 72, 153, 0.25),
+        0 0 35px rgba(139, 92, 246, 0.65),
+        0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.intro-card button:active {
+    transform: scale(.97) translateY(-1px);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+#intro-screen.transition{
+
+    animation:
+        introZoom
+        2.2s
+        cubic-bezier(.19,.85,.23,1)
+        forwards;
+
+}
+#intro-screen.hide{
+
+    opacity:0;
+
+}
+
+@keyframes introFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+.fullscreen-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 999999;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+    color: white;
+    font-size: 28px;
+    border: none; /* تم إلغاء الحدود العادية لأننا سنعتمد على التوهج والتدريج */
+
+    /* التعديل: إعطاء الزرار نفس التدريج اللوني لزر البداية */
+    background: linear-gradient(135deg, #a78bfa, #f472b6); 
+    
+    /* إعطاؤه نفس تأثير توهج النيون المحيط بزر البداية ليبرز بوضوح */
+    box-shadow: 
+        0 0 0 4px rgba(244, 114, 182, 0.2),
+        0 0 25px rgba(167, 139, 250, 0.5),
+        0 10px 25px rgba(0, 0, 0, 0.2);
+        
+    transition: all .3s ease;
+}
+
+/* تأثير تمرير الماوس (Hover) بنفس درجات زر البداية عند تفاعله */
+.fullscreen-btn:hover {
+    transform: scale(1.1) translateY(-2px); /* تكبير طفيف وحركة لأعلى للبروز */
+    
+    /* جعل الألوان أفتح وأكثر حيوية عند الـ Hover */
+    background: linear-gradient(135deg, #c084fc, #f472b6);
+    
+    /* زيادة قوة توهج النيون ليصبح مضيئاً بشكل مبهر */
+    box-shadow: 
+        0 0 0 6px rgba(244, 114, 182, 0.3),
+        0 0 40px rgba(192, 132, 252, 0.8),
+        0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* تأثير الضغط (Active) */
+.fullscreen-btn:active {
+    transform: scale(.95);
+    box-shadow: 0 4px 15px rgba(167, 139, 250, 0.4);
+}
+.intro-card button.start-click{
+
+    animation:
+        buttonPulse .55s ease;
+
+}
+@keyframes buttonPulse{
+
+    0%{
+
+        transform:
+            scale(1);
+
+    }
+
+    50%{
+
+        transform:
+            scale(.92);
+
+        box-shadow:
+
+            0 0 0 22px rgba(255,120,220,.14),
+
+            0 0 90px rgba(255,120,220,.60);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1);
+
+    }
+
+}
+@keyframes introZoom{
+
+    0%{
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0px);
+
+    }
+
+    18%{
+
+        transform:
+            scale(.97);
+
+    }
+
+    45%{
+
+        transform:
+            scale(1.03);
+
+        filter:
+            blur(2px);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1.55);
+
+        filter:
+            blur(18px);
+
+    }
+
+}
+.music-btn {
+    position: fixed;
+    top: 24px;
+right: 24px;
+z-index: 999999;
+    width: 58px;
+    height: 58px;
+font-weight: bold;
+font-size: 24px;
+line-height: 1;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: white;
+    font-size: 26px;
+
+    border: none;
+
+    /* نفس ألوان زرار الـ Fullscreen */
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+
+    /* نفس التوهج */
+    box-shadow:
+        0 0 0 4px rgba(244, 114, 182, 0.2),
+        0 0 25px rgba(167, 139, 250, 0.5),
+        0 10px 25px rgba(0, 0, 0, 0.2);
+
+    transition: all .3s ease;
+
+    user-select: none;
+}
+
+.music-btn:hover {
+
+    transform: scale(1.1) translateY(-2px);
+
+    background: linear-gradient(135deg, #c084fc, #f472b6);
+
+    box-shadow:
+        0 0 0 6px rgba(244, 114, 182, 0.3),
+        0 0 40px rgba(192, 132, 252, 0.8),
+        0 15px 30px rgba(0, 0, 0, 0.25);
+
+}
+
+.music-btn:active {
+
+    transform: scale(.95);
+
+    box-shadow:
+        0 4px 15px rgba(167, 139, 250, 0.4);
+
+}
+.volume-control{
+
+    position:fixed;
+
+    top:92px;
+
+    right:18px;
+
+    width:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    z-index:999999;
+
+}
+
+.volume-slider{
+
+    width:70px;
+
+    height:4px;
+
+    appearance:none;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+    outline:none;
+
+    cursor:pointer;
+
+}
+
+/* الخط الممشى */
+.volume-slider::-webkit-slider-runnable-track{
+
+    height:4px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+}
+
+/* الدائرة */
+.volume-slider::-webkit-slider-thumb{
+
+    appearance:none;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#f472b6;
+
+    margin-top:-4px;
+
+    box-shadow:
+        0 0 10px rgba(244,114,182,.8);
+
+}
+
+.volume-slider::-moz-range-track{
+
+    height:4px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+}
+
+.volume-slider::-moz-range-thumb{
+
+    width:12px;
+
+    height:12px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f472b6;
+
+    box-shadow:
+        0 0 10px rgba(244,114,182,.8);
+
+}
+@media (max-height: 900px){
+
+    .memory-card{
+
+        transform: scale(.92);
+
+        transform-origin: top center;
+
+    }
+
+}
+
+@media (max-height: 820px){
+
+    .memory-card{
+
+        transform: scale(.84);
+
+    }
+
+}
+
+@media (max-height: 740px){
+
+    .memory-card{
+
+        transform: scale(.76);
+
+    }
+
+}
+@media (max-height:900px){
+
+    #memory-image{
+
+        width:min(55%,280px);
+
+    }
+
+    #memory-title{
+
+        margin-bottom:15px;
+
+    }
+
+    #memory-message{
+
+        line-height:1.7;
+
+    }
+
+    #memory-close{
+
+        margin-top:30px;
+
+    }
+
+}
+
+@media (max-height:760px){
+
+    #memory-image{
+
+        width:min(50%,220px);
+
+        margin-bottom:20px;
+
+    }
+
+    #memory-title{
+
+        font-size:30px;
+
+        margin-bottom:12px;
+
+    }
+
+    #memory-message{
+
+        font-size:16px;
+
+        line-height:1.6;
+
+    }
+
+    #memory-close{
+
+        margin-top:20px;
+
+    }
+
+}
