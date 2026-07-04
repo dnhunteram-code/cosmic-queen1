@@ -30,15 +30,15 @@
   },
 
   "mac": {
-    "target": [
-      {
-        "target": "dmg",
-        "arch": [
-          "x64",
-          "arm64"
-        ]
-      }
-    ],
+  "target": [
+    {
+      "target": "zip",
+      "arch": [
+        "x64",
+        "arm64"
+      ]
+    }
+  ],
     "icon": "build/cosmic.icns",
     "artifactName": "Cosmic Queen.${ext}",
     "category": "public.app-category.entertainment"
